@@ -1,0 +1,24 @@
+Outline for ANN:
+
+
+Create an ANN with the following parameters:
+	3 layers:
+		4 input neurons (with 1 bias neuron)
+		1 hidden neuron (with 0 bias neurons)
+		2 output neurons (with 0 bias neurons)
+
+FEED FORWARD: 
+
+	Input Layer is a column vector of size 5, the weights are a single row matrix of 5.
+
+	Compute the product of the two matrices, feed it into the sigmoid function, then you have the activation.
+
+	This activation is then multiplied into a two row, single column matrix, the resulting values are then put into the sigmoid activation.
+
+	The result is the answer, a_1 = dark, a_2 = light
+
+BACK PROPAGATION:
+
+	Compute the error
+	
+	
