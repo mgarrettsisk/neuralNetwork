@@ -15,8 +15,6 @@ public class neuralNetwork {
     private double[] w2 = {0.5, 0.5};
     private double[] a2 = {0,0};
 
-
-
     neuralNetwork() {
         generateRandomWeights();
     }
@@ -24,20 +22,20 @@ public class neuralNetwork {
     // public methods
     public double[] feedForward(double[] inputVector) {
         // For input layer to hidden layer, we multiply the input vector by the weight matrix and sum the values.
-        System.out.println("Feed Forward Operation begun...");
+        //System.out.println("Feed Forward Operation begun...");
         double inputSum = 0.0;
         for (int i = 0; i < inputVector.length; i++) {
            inputSum = inputSum + inputVector[i]*this.w1[i];
         }
         // activation of hidden neuron from 5 input neurons
         a1 = sigmoid(inputSum);
-        System.out.println(" h_1 = " + a1);
+        //System.out.println(" h_1 = " + a1);
 
         // From hidden layer (1 neuron) to output layer (2 neurons)
         a2[0] = sigmoid(a1*w2[0]);
         a2[1] = sigmoid(a1*w2[1]);
-        System.out.println("a2[0] = " + a2[0]);
-        System.out.println("a2[1] = " + a2[1]);
+        //System.out.println("a2[0] = " + a2[0]);
+        //System.out.println("a2[1] = " + a2[1]);
 
         // returns the output
         return a2;
@@ -57,7 +55,9 @@ public class neuralNetwork {
         int iteration = 0;
 
         while (iteration < epochs) {
-            System.out.println("Entering training epoch " + iteration);
+            if (iteration%100 == 0) {
+                System.out.println("Entering training epoch " + iteration);
+            }
             // for each element in the training set
             for (int i = 0; i < trainingSet.length; i++) {
 
@@ -69,15 +69,15 @@ public class neuralNetwork {
                         trainingSet[i][3],
                         trainingSet[i][4]
                 };
-                System.out.println("---- Training Feed Forward Call ----");
+                //System.out.println("---- Training Feed Forward Call ----");
                 double[] results = feedForward(feedFwdTrainingSet);
-                System.out.println("---- Training Feed Forward Call Finished ----");
+                //System.out.println("---- Training Feed Forward Call Finished ----");
                 // calculate error for each output
                 double[] outputErrors = {
                         outputError(trainingSet[i][5], results[0]),
                         outputError(trainingSet[i][6], results[1])
                 };
-                System.out.println("Output Errors: \tO_1 = " + outputErrors[0] + ", O_2 = " + outputErrors[1]);
+                //System.out.println("Output Errors: \tO_1 = " + outputErrors[0] + ", O_2 = " + outputErrors[1]);
 
                 // back propagate the errors to the hidden neuron unit
                 // compute the weighted sum of errors from outputs
